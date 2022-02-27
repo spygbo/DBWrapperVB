@@ -666,6 +666,7 @@ Namespace DatabaseWrapper.Postgresql
 			End If
 
 			Dim result As New DataTable()
+			Dim reader As NpgsqlDataReader
 
 			If LogQueries AndAlso Logger IsNot Nothing Then
 				Logger(_Header & "query: " & query_Conflict)
@@ -693,7 +694,7 @@ Namespace DatabaseWrapper.Postgresql
 					'Parametarisation begins here
 					Dim DbConn As NpgsqlConnection
 					Dim CmdSql As NpgsqlCommand
-					Dim reader As NpgsqlDataReader
+
 					Dim sSQL1 As String = ""
 					Dim sSQL2 As String = ""
 					DbConn = New NpgsqlConnection(_ConnectionString)
@@ -736,7 +737,14 @@ Namespace DatabaseWrapper.Postgresql
 						End If
 						.Connection.Open()
 						reader = .ExecuteReader()
+						If reader.HasRows = True Then
 
+							'result = PopulateReultsTable(reader)
+
+							result.Load(reader)
+						End If
+						.Connection.Close()
+						.Dispose()
 
 
 						'If reader.HasRows = True Then

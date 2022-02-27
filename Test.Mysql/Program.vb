@@ -222,7 +222,6 @@ Namespace Test
 		End Sub
 
 
-
 		Private Shared Sub LoadRows()
 			For i As Integer = 0 To 49
 				Dim d As New Dictionary(Of String, Object)()

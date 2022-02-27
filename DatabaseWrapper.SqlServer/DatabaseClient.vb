@@ -672,6 +672,7 @@ Namespace DatabaseWrapper.SqlServer
 
 
 			Dim result As New DataTable()
+			Dim reader As SqlDataReader
 
 			If LogQueries AndAlso Logger IsNot Nothing Then
 				Logger(_Header & "query: " & query_Conflict)
@@ -696,7 +697,7 @@ Namespace DatabaseWrapper.SqlServer
 					'Parametarisation begins here
 					Dim DbConn As SqlConnection
 					Dim CmdSql As SqlCommand
-					Dim reader As SqlDataReader
+
 					Dim sSQL1 As String = ""
 					Dim sSQL2 As String = ""
 					DbConn = New SqlConnection(_ConnectionString)
@@ -739,9 +740,14 @@ Namespace DatabaseWrapper.SqlServer
 						End If
 						.Connection.Open()
 						reader = .ExecuteReader()
+						If reader.HasRows = True Then
 
+							'result = PopulateReultsTable(reader)
 
-
+							result.Load(reader)
+						End If
+						.Connection.Close()
+						.Dispose()
 						'If reader.HasRows = True Then
 
 						'	'result = PopulateReultsTable(reader)
