@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net461;net5.0;net6.0</TargetFrameworks>
+    <!--<TargetFrameworks>netstandard2.1;netcoreapp3.1;net461;net5.0;net6.0</TargetFrameworks>-->
+	<TargetFrameworks>netstandard2.1;netcoreapp3.1;net461;net5.0</TargetFrameworks>
     <Version>4.0.0.1</Version>
     <Authors>Joel Christner</Authors>
-    <Description>Simple database wrapper for Postgresql written in C# supporting dynamic query building and nesting using expressions.  Refer to other DatabaseWrapper packages for support for SQL Server, Sqlite, and MySQL.</Description>
+    <Company>Joel Christner</Company>
+    <Description>Simple database wrapper for MySQL written in C# supporting dynamic query building and nesting using expressions.  Refer to other DatabaseWrapper packages for support for SQL Server, Sqlite, and PostgreSQL.</Description>
     <Copyright>(c)2021 Joel Christner</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/jchristn/DatabaseWrapper</PackageProjectUrl>
@@ -16,63 +18,76 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>icon.png</PackageIcon>
+    <RootNamespace />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.1|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
-  
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
 
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.1|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
-    <DocumentationFile>DatabaseWrapper.Postgresql.xml</DocumentationFile>
+    <DocumentationFile>DatabaseWrapper.Mysql.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
 
 
 
   <ItemGroup>
     <PackageReference Include="DatabaseWrapper.Core" Version="4.0.0.1" />
-    <PackageReference Include="Npgsql" Version="6.0.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.27" />
   </ItemGroup>
 
   <ItemGroup>
@@ -82,7 +97,7 @@
     <None Update="assets\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="DatabaseWrapper.Postgresql.xml">
+    <None Update="DatabaseWrapper.Mysql.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="LICENSE.md">

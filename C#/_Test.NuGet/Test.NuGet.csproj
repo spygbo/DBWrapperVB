@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net461;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseWrapper.SqlServer\DatabaseWrapper.SqlServer.csproj" />
+    <PackageReference Include="DatabaseWrapper" Version="4.0.0.1" />
   </ItemGroup>
 
   <ItemGroup>
