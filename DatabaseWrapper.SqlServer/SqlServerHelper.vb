@@ -257,11 +257,18 @@ Namespace DatabaseWrapper.SqlServer
 
 		Friend Function InsertQuery(ByVal tableName As String, ByVal keys As String, ByVal values As String) As String
 			'Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & keys & ") " & "OUTPUT INSERTED.* " & "VALUES " & "(" & values & ") "
-			Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & Sanitise(keys) & ") " & "OUTPUT INSERTED.* " & "VALUES " & "(" & keys & ") "
+			Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & Sanitise(keys) & ") " & "OUTPUT INSERTED.* " & "VALUES " & "(" & SanitiseForMSSQL(keys) & ") "
 			Return ret
 		End Function
 		Public Function Sanitise(ByRef sval As String) As String
 			Return sval.Replace("@", "")
+
+		End Function
+
+		Public Function SanitiseForMSSQL(ByRef sval As String) As String
+			Dim r1 As String = sval.Replace("[", "")
+
+			Return r1.Replace("]", "")
 		End Function
 
 		Friend Function InsertMultipleQuery(ByVal tableName As String, ByVal keys As String, ByVal values As List(Of String)) As String

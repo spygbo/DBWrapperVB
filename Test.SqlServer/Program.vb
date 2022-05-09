@@ -17,7 +17,8 @@ Namespace Test
 		Private Shared _Database As DatabaseClient
 		Private Shared _FileBytes() As Byte = File.ReadAllBytes("./headshot.png")
 
-		Private Shared _Host As String = "localhost"
+		'Private Shared _Host As String = "localhost"
+		Private Shared _Host As String = "207.180.251.189 "
 		Private Shared _Port As Integer = 1433
 		Private Shared _Instance As String = Nothing ' set to SQLEXPRESS for typical SQL Server Express installations
 
@@ -234,7 +235,7 @@ Namespace Test
 				d.Add("value", i * 1000)
 				d.Add("birthday", DateTime.Now)
 				d.Add("hourly", 123.456)
-				d.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
+				'd.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
 				d.Add("picture", _FileBytes)
 				_Database.Insert(_Table, d)
 			Next i
@@ -247,7 +248,7 @@ Namespace Test
 				d.Add("value", i * 1000)
 				d.Add("birthday", DateTime.Now)
 				d.Add("hourly", 123.456)
-				d.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
+				'd.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
 
 				_Database.Insert(_Table, d)
 			Next i
@@ -264,7 +265,7 @@ Namespace Test
 				d.Add("value", i * 1000)
 				d.Add("birthday", DateTime.Now)
 				d.Add("hourly", 123.456)
-				d.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
+				'd.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
 				d.Add("picture", _FileBytes)
 				dicts.Add(d)
 			Next i
@@ -432,7 +433,7 @@ Namespace Test
 			Console.WriteLine("  Text: " & text)
 			Console.WriteLine("  Type: " & e.GetType().ToString())
 			Console.WriteLine("  Data: " & e.Data.ToString())
-			Console.WriteLine("  Inner: " & e.InnerException.ToString)
+			'Console.WriteLine("  Inner: " & e.InnerException.ToString)
 			Console.WriteLine("  Message: " & e.Message)
 			Console.WriteLine("  Source: " & e.Source)
 			Console.WriteLine("  StackTrace: " & e.StackTrace)
