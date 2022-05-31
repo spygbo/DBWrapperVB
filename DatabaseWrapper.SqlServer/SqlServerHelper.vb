@@ -255,9 +255,11 @@ Namespace DatabaseWrapper.SqlServer
 			Return query
 		End Function
 
-		Friend Function InsertQuery(ByVal tableName As String, ByVal keys As String, ByVal values As String) As String
+		Friend Function InsertQuery(ByVal tableName As String, ByVal keys As String, ByVal values As String, ByVal outputkeys As String) As String
 			'Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & keys & ") " & "OUTPUT INSERTED.* " & "VALUES " & "(" & values & ") "
-			Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & Sanitise(keys) & ") " & "OUTPUT INSERTED.* " & "VALUES " & "(" & SanitiseForMSSQL(keys) & ") "
+			'SELECT scope_identity() as ReturnID
+			Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & Sanitise(keys) & ") " & "OUTPUT " & outputkeys & " " & "VALUES " & "(" & SanitiseForMSSQL(keys) & ") "
+			'Dim ret As String = "INSERT INTO " & PreparedTableName(tableName) & " WITH (ROWLOCK) " & "(" & Sanitise(keys) & ") " & "VALUES " & "(" & SanitiseForMSSQL(keys) & ") SELECT scope_identity() as ReturnID "
 			Return ret
 		End Function
 		Public Function Sanitise(ByRef sval As String) As String
@@ -378,10 +380,14 @@ Namespace DatabaseWrapper.SqlServer
 		Friend Function PreparedFieldName(ByVal s As String) As String
 			Return "[" & s & "]"
 		End Function
+		Friend Function PreparedOutputFieldName(ByVal s As String) As String
+			Return "INSERTED.[" & s & "]"
+		End Function
 
 		Friend Function PreparedStringValue(ByVal s As String) As String
 			Return "'" & SqlServerHelper.SanitizeString(s) & "'"
 		End Function
+
 
 		Friend Function PreparedTableName(ByVal s As String) As String
 			s = s.Replace("[", "")

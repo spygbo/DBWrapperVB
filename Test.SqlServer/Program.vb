@@ -237,9 +237,17 @@ Namespace Test
 				d.Add("hourly", 123.456)
 				'd.Add("localtime", New DateTimeOffset(2021, 4, 14, 01, 02, 03, New TimeSpan(7, 0, 0)))
 				d.Add("picture", _FileBytes)
-				_Database.Insert(_Table, d)
-			Next i
 
+
+
+				Dim dtab As DataTable = _Database.Insert(_Table, d)
+
+				For Each dr In dtab.Rows
+					For a = 0 To d.Count - 1
+						Console.WriteLine(dr(a))
+					Next
+				Next
+			Next
 			For i As Integer = 0 To 9
 				Dim d As New Dictionary(Of String, Object)()
 				d.Add("firstname", "firsté" & i)

@@ -85,7 +85,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="DatabaseWrapper.Core" Version="4.0.0.1" />
+    <PackageReference Include="ExpressionTree" Version="1.0.0.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
@@ -110,6 +110,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseWrapper.Core\DatabaseWrapper.Core.vbproj" />
   </ItemGroup>
 
 </Project>
